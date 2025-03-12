@@ -5,11 +5,12 @@ package opportunities
 import (
 	context "context"
 	fmt "fmt"
-	core "github.com/merge-api/merge-go-client/core"
-	crm "github.com/merge-api/merge-go-client/crm"
 	http "net/http"
 	url "net/url"
 	time "time"
+
+	core "github.com/merge-api/merge-go-client/core"
+	crm "github.com/merge-api/merge-go-client/crm"
 )
 
 type Client struct {

@@ -5,11 +5,12 @@ package accounts
 import (
 	context "context"
 	fmt "fmt"
-	core "github.com/merge-api/merge-go-client/core"
-	crm "github.com/merge-api/merge-go-client/crm"
 	http "net/http"
 	url "net/url"
 	time "time"
+
+	core "github.com/merge-api/merge-go-client/core"
+	crm "github.com/merge-api/merge-go-client/crm"
 )
 
 type Client struct {
@@ -49,7 +50,7 @@ func (c *Client) List(ctx context.Context, request *crm.AccountsListRequest) (*c
 		queryParams.Add("cursor", fmt.Sprintf("%v", *request.Cursor))
 	}
 	if request.Expand != nil {
-		queryParams.Add("expand", fmt.Sprintf("%v", request.Expand))
+		queryParams.Add("expand", *request.Expand)
 	}
 	if request.IncludeDeletedData != nil {
 		queryParams.Add("include_deleted_data", fmt.Sprintf("%v", *request.IncludeDeletedData))
@@ -145,7 +146,7 @@ func (c *Client) Retrieve(ctx context.Context, id string, request *crm.AccountsR
 
 	queryParams := make(url.Values)
 	if request.Expand != nil {
-		queryParams.Add("expand", fmt.Sprintf("%v", request.Expand))
+		queryParams.Add("expand", *request.Expand)
 	}
 	if request.IncludeRemoteData != nil {
 		queryParams.Add("include_remote_data", fmt.Sprintf("%v", *request.IncludeRemoteData))
